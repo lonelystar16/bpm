@@ -65,7 +65,7 @@
                 <div class="col-md-6">
                     <div class="card service-detail-card h-100">
                         <div class="row g-0">
-                            <div class="col-md-4 service-img" style="background-image: url('{% static 'img/service-clinic.jpg' %}')"></div>
+                            <div class="col-md-4 service-img" id="img-clinica"></div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="service-icon mb-3">
@@ -78,7 +78,7 @@
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Vacunación</li>
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Tratamientos especializados</li>
                                     </ul>
-                                    <a href="agendar.html?servicio=clinica" class="btn btn-primary">
+                                    <a href="{% url 'agendar' %}?servicio=clinica" class="btn btn-primary">
                                         <i class="bi bi-calendar-check me-2"></i>Agendar cita
                                     </a>
                                 </div>
@@ -91,7 +91,7 @@
                 <div class="col-md-6">
                     <div class="card service-detail-card h-100">
                         <div class="row g-0">
-                            <div class="col-md-4 service-img" style="background-image: url('{% static 'img/service-mobile.jpg' %}')"></div>
+                            <div class="col-md-4 service-img" id="img-movil"></div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="service-icon mb-3">
@@ -104,7 +104,7 @@
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Vacunación en casa</li>
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Tratamientos básicos</li>
                                     </ul>
-                                    <a href="agendar.html?servicio=movil" class="btn btn-primary">
+                                    <a href="{% url 'agendar' %}?servicio=movil" class="btn btn-primary">
                                         <i class="bi bi-calendar-check me-2"></i>Agendar visita
                                     </a>
                                 </div>
@@ -117,7 +117,7 @@
                 <div class="col-md-6">
                     <div class="card service-detail-card h-100">
                         <div class="row g-0">
-                            <div class="col-md-4 service-img" style="background-image: url('{% static 'img/service-grooming.jpg' %}')"></div>
+                            <div class="col-md-4 service-img" id="img-peluqueria"></div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="service-icon mb-3">
@@ -130,7 +130,7 @@
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Corte de pelo</li>
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Corte de uñas</li>
                                     </ul>
-                                    <a href="agendar.html?servicio=peluqueria" class="btn btn-primary">
+                                    <a href="{% url 'agendar' %}?servicio=peluqueria" class="btn btn-primary">
                                         <i class="bi bi-calendar-check me-2"></i>Agendar servicio
                                     </a>
                                 </div>
@@ -143,7 +143,7 @@
                 <div class="col-md-6">
                     <div class="card service-detail-card h-100">
                         <div class="row g-0">
-                            <div class="col-md-4 service-img" style="background-image: url('{% static 'img/service-pharmacy.jpg' %}')"></div>
+                            <div class="col-md-4 service-img" id="img-farmacia"></div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="service-icon mb-3">
@@ -156,7 +156,7 @@
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Suplementos alimenticios</li>
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i>Productos antiparasitarios</li>
                                     </ul>
-                                    <a href="agendar.html?servicio=farmacia" class="btn btn-primary">
+                                    <a href="{% url 'agendar' %}?servicio=farmacia" class="btn btn-primary">
                                         <i class="bi bi-calendar-check me-2"></i>Solicitar productos
                                     </a>
                                 </div>
