@@ -1,0 +1,2 @@
+Django>=5.2,<6.0
+# Puedes agregar otros módulos aquí si tu proyecto los requiere
