@@ -1,0 +1,389 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Mascota Feliz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/logo.jpg' %}" alt="Mascota Feliz Logo" height="50">
+                    <span class="ms-2 fw-bold text-primary">Mascota Feliz</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'servicios' %}">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary ms-lg-3 px-3" href="{% url 'login' %}">Iniciar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold text-primary">Conoce a Mascota Feliz</h1>
+                    <p class="lead my-4">Somos un equipo de profesionales apasionados por el bienestar animal, dedicados a brindar el mejor cuidado veterinario desde 1990.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{% static 'img/about-hero.jpg' %}" alt="Equipo de Mascota Feliz" class="img-fluid rounded-4 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold text-primary mb-3">Nuestra Historia</h2>
+                    <p class="lead">Un viaje de pasión y dedicación al cuidado animal</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <div class="about-story-img">
+                        <img src="{% static 'img/about-story.jpg' %}" alt="Historia de Mascota Feliz" class="img-fluid rounded-4 shadow">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="about-story-content">
+                        <div class="mb-4">
+                            <h5 class="fw-bold">1990: El comienzo</h5>
+                            <p>Mascota Feliz nació como un pequeño consultorio veterinario fundado por la Dra. María Rodríguez, con la visión de ofrecer atención veterinaria de calidad y personalizada.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="fw-bold">2015: Crecimiento</h5>
+                            <p>Tras quince años de servicio dedicado, expandimos nuestras instalaciones para incluir servicios de peluquería, farmacia y comenzamos con nuestro servicio de veterinaria móvil.</p>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold">2023: Actualidad</h5>
+                            <p>Hoy contamos con un equipo de 150 profesionales, instalaciones modernas y tecnología de vanguardia para ofrecer el mejor cuidado a nuestros pacientes peludos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Values -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold text-primary mb-3">Misión, Visión y Valores</h2>
+                    <p class="lead">Los pilares que guían nuestro trabajo diario</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mission-icon mb-3">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3">Misión</h3>
+                            <p class="card-text">Brindar atención veterinaria integral y de calidad, promoviendo el bienestar y la salud de las mascotas a través de un servicio profesional, ético y compasivo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mission-icon mb-3">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3">Visión</h3>
+                            <p class="card-text">Ser reconocidos como la clínica veterinaria líder en nuestra comunidad, destacando por la excelencia en el servicio, la innovación y el compromiso con el bienestar animal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mission-icon mb-3">
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3">Valores</h3>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Compromiso con el bienestar animal</li>
+                                <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Profesionalismo y ética</li>
+                                <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Empatía y respeto</li>
+                                <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Actualización constante</li>
+                                <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Responsabilidad social</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold text-primary mb-3">Nuestro Equipo</h2>
+                    <p class="lead">Profesionales comprometidos con la salud y bienestar de tu mascota</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm">
+                        <div class="team-img-container">
+                            <img src="{% static 'img/team-1.jpg' %}" class="card-img-top" alt="Dra. María Rodríguez">
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-1">Dra. María Rodríguez</h5>
+                            <p class="text-muted mb-3">Directora Médica</p>
+                            <p class="card-text">Especialista en medicina interna con más de 15 años de experiencia. Fundadora de Mascota Feliz.</p>
+                            <div class="team-social mt-3">
+                                <a href="#" class="text-primary me-2"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-primary"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm">
+                        <div class="team-img-container">
+                            <img src="{% static 'img/team-2.jpg' %}" class="card-img-top" alt="Dr. Carlos Mendoza">
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-1">Dr. Carlos Mendoza</h5>
+                            <p class="text-muted mb-3">Cirujano</p>
+                            <p class="card-text">Especialista en cirugía veterinaria con enfoque en procedimientos mínimamente invasivos.</p>
+                            <div class="team-social mt-3">
+                                <a href="#" class="text-primary me-2"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-primary"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm">
+                        <div class="team-img-container">
+                            <img src="{% static 'img/team-3.jpg' %}" class="card-img-top" alt="Dra. Ana Gómez">
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-1">Dra. Ana Gómez</h5>
+                            <p class="text-muted mb-3">Dermatóloga</p>
+                            <p class="card-text">Especialista en dermatología veterinaria, con amplia experiencia en tratamientos para problemas de piel.</p>
+                            <div class="team-social mt-3">
+                                <a href="#" class="text-primary me-2"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-primary"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm">
+                        <div class="team-img-container">
+                            <img src="{% static 'img/team-4.jpg' %}" class="card-img-top" alt="Luis Pérez">
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-1">Luis Pérez</h5>
+                            <p class="text-muted mb-3">Peluquero Canino</p>
+                            <p class="card-text">Especialista en estética canina con más de 8 años de experiencia en razas de todo tipo.</p>
+                            <div class="team-social mt-3">
+                                <a href="#" class="text-primary me-2"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-primary"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Facilities -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold text-primary mb-3">Nuestras Instalaciones</h2>
+                    <p class="lead">Espacios diseñados para el confort y la atención de calidad</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-1.jpg' %}" alt="Sala de consulta" class="img-fluid rounded-4 mb-3">
+                        <h5>Salas de Consulta</h5>
+                        <p>Espacios cómodos y equipados para una atención personalizada.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-2.jpg' %}" alt="Quirófano" class="img-fluid rounded-4 mb-3">
+                        <h5>Quirófano</h5>
+                        <p>Equipado con tecnología de vanguardia para procedimientos seguros.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-3.jpg' %}" alt="Área de peluquería" class="img-fluid rounded-4 mb-3">
+                        <h5>Área de Peluquería</h5>
+                        <p>Diseñada para ofrecer servicios de estética en un ambiente tranquilo.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-4.jpg' %}" alt="Laboratorio" class="img-fluid rounded-4 mb-3">
+                        <h5>Laboratorio</h5>
+                        <p>Para análisis rápidos y precisos que ayudan en el diagnóstico.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-5.jpg' %}" alt="Farmacia" class="img-fluid rounded-4 mb-3">
+                        <h5>Farmacia</h5>
+                        <p>Surtida con medicamentos de calidad para el tratamiento de tu mascota.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="facility-card">
+                        <img src="{% static 'img/facility-6.jpg' %}" alt="Área de hospitalización" class="img-fluid rounded-4 mb-3">
+                        <h5>Hospitalización</h5>
+                        <p>Espacios confortables para la recuperación de nuestros pacientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold text-primary mb-3">Certificaciones y Reconocimientos</h2>
+                    <p class="lead">Nuestro compromiso con la excelencia avalado por instituciones reconocidas</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="certifications-container text-center">
+                        <div class="row g-4 justify-content-center align-items-center">
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="certification-item p-3">
+                                    <img src="{% static 'img/cert-1.png' %}" alt="Certificación 1" class="img-fluid mb-3">
+                                    <p class="mb-0 small">Asociación Veterinaria Nacional</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="certification-item p-3">
+                                    <img src="{% static 'img/cert-2.png' %}" alt="Certificación 2" class="img-fluid mb-3">
+                                    <p class="mb-0 small">Colegio de Médicos Veterinarios</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="certification-item p-3">
+                                    <img src="{% static 'img/cert-3.png' %}" alt="Certificación 3" class="img-fluid mb-3">
+                                    <p class="mb-0 small">Sociedad de Dermatología Veterinaria</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="certification-item p-3">
+                                    <img src="{% static 'img/cert-4.png' %}" alt="Certificación 4" class="img-fluid mb-3">
+                                    <p class="mb-0 small">Asociación de Clínicas Veterinarias</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">¿Listo para conocernos en persona?</h2>
+                    <p class="lead mb-4">Agenda una cita o visítanos para conocer nuestras instalaciones y equipo.</p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="{% url 'agendar' %}" class="btn btn-light btn-lg">
+                            <i class="bi bi-calendar-check me-2"></i>Agendar Cita
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-geo-alt me-2"></i>Cómo Llegar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">Mascota Feliz</h5>
+                    <p>Cuidamos con amor y profesionalismo a tus mascotas para que tengan una vida saludable y feliz.</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">Contacto</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i>Av. Principal 123, Ciudad</p>
+                    <p><i class="bi bi-telephone me-2"></i>(123) 456-7890</p>
+                    <p><i class="bi bi-envelope me-2"></i>contacto@mascotafeliz.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Síguenos</h5>
+                    <div class="d-flex">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 Mascota Feliz. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

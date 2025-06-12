@@ -14,3 +14,6 @@ def login(request):
 
 def agendar(request):
     return render(request, 'agendar.html')
+
+def nosotros(request):
+    return render(request, 'nosotros.html')
