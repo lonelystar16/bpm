@@ -111,6 +111,25 @@ body {
   box-shadow: 0 4px 15px rgba(69, 123, 157, 0.3);
 }
 
+#hero-section {
+  min-width: 1200px;
+  min-height: 800px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  /* Puedes ajustar el padding/margin si lo deseas */
+}
+
+#hero-image {
+  width: 1200px;
+  height: 800px;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Service Cards */
 .service-card {
   border: none;

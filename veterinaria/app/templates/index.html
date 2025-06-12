@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'index' %}">
-                    <img src="{% static 'img/logo.png' %}" alt="Mascota Feliz Logo" height="50">
+                    <img src="{% static 'img/logo.jpg' %}" alt="Mascota Feliz Logo" height="50">
                     <span class="ms-2 fw-bold text-primary">Mascota Feliz</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -43,7 +43,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero py-5">
+    <section class="hero py-5" id="hero-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
@@ -54,7 +54,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="{% static 'img/hero-image.jpg' %}" alt="Veterinario con mascota" class="img-fluid rounded-4 shadow">
+                    <img id="hero-image" src="{% static 'img/hero-image.jpg' %}" alt="Veterinario con mascota" class="img-fluid rounded-4 shadow" width="1200" height="800" style="max-width:100%;height:auto;">
                 </div>
             </div>
         </div>
