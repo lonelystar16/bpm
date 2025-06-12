@@ -176,6 +176,14 @@ body {
   border-radius: 15px 0 0 15px;
 }
 
+.service-img img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+  display: block;
+}
+
 /* Testimonial Cards */
 .testimonial-card {
   border: none;
