@@ -13,6 +13,11 @@ Este proyecto es una aplicación web desarrollada con Django para la gestión de
 - Gestión de perfil de usuario y mascotas
 - Listado de servicios y farmacia
 - Interfaz moderna y responsiva con Bootstrap
+- Uso de archivos estáticos con la sintaxis de Django (`{% static %}`)
+- Navegación entre vistas usando `{% url %}`
+- Sección "Nosotros" con historia desde 1990 y equipo ampliado
+- Formularios interactivos con validación y almacenamiento local (localStorage)
+- Modal de confirmación para agendar citas
 
 ## Instalación
 
@@ -25,7 +30,8 @@ Este proyecto es una aplicación web desarrollada con Django para la gestión de
 2. **Crea y activa un entorno virtual:**
    ```bash
    python -m venv venv
-   En Windows: venv\Scripts\activate
+   # En Windows:
+   venv\Scripts\activate
    ```
 
 3. **Instala las dependencias:**
@@ -49,6 +55,7 @@ Este proyecto es una aplicación web desarrollada con Django para la gestión de
 ## Rutas principales
 
 - `/` — Página principal
+- `/nosotros/` — Sobre la veterinaria y el equipo
 - `/servicios/` — Listado de servicios veterinarios
 - `/perfil/` — Perfil del usuario y mascotas
 - `/login/` — Inicio de sesión y registro
@@ -62,7 +69,10 @@ Este proyecto es una aplicación web desarrollada con Django para la gestión de
 
 ## Notas
 
-- Asegúrate de tener configurado el uso de archivos estáticos en Django para producción.
+- Todos los archivos estáticos (CSS, JS, imágenes) se referencian usando la etiqueta `{% static %}` de Django.
+- Las rutas internas usan la etiqueta `{% url %}` para una navegación robusta.
+- La sección "Nosotros" ahora refleja el inicio de la veterinaria en 1990, el crecimiento y el equipo actualizado.
+- Los formularios de autenticación y agendamiento usan validación en el frontend y almacenamiento en localStorage para demostración.
 - Puedes personalizar los templates y estilos en la carpeta `static/css/styles.css`.
 
 ---
