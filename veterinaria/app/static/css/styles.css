@@ -423,11 +423,11 @@ body {
 }
 
 .auth-form {
-  display: none;
+  display: block;
 }
 
-.auth-form.active {
-  display: block;
+.auth-form.d-none {
+  display: none !important;
 }
 
 .input-group-text {

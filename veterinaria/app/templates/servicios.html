@@ -31,11 +31,23 @@
                             <a class="nav-link active" href="{% url 'servicios' %}">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                            <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'perfil' %}">Mi Perfil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-primary ms-lg-3 px-3" href="{% url 'login' %}">Iniciar sesión</a>
+                            <a class="nav-link" href="{% url 'agendar' %}">Agendar Cita</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger ms-lg-3 px-3" href="{% url 'logout' %}" onclick="return confirm('¿Estás seguro de que quieres cerrar sesión?')">Cerrar Sesión</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary ms-lg-3 px-3" href="{% url 'login' %}">Iniciar Sesión</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

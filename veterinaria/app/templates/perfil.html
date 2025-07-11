@@ -31,16 +31,40 @@
                             <a class="nav-link" href="{% url 'servicios' %}">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'perfil' %}">Perfil</a>
+                            <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'perfil' %}">Mi Perfil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-primary ms-lg-3 px-3" href="{% url 'login' %}">Iniciar sesión</a>
+                            <a class="nav-link" href="{% url 'agendar' %}">Agendar Cita</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger ms-lg-3 px-3" href="{% url 'logout' %}" onclick="return confirm('¿Estás seguro de que quieres cerrar sesión?')">Cerrar Sesión</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary ms-lg-3 px-3" href="{% url 'login' %}">Iniciar Sesión</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Profile Section -->
     <section class="py-5 bg-light">
@@ -49,239 +73,193 @@
                 <!-- Sidebar -->
                 <div class="col-lg-3 mb-4 mb-lg-0">
                     <div class="card shadow-sm">
-                        <div class="card-body">
-                            <div class="text-center mb-4">
-                                <div class="profile-avatar mx-auto mb-3">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                                <h5 class="mb-1">Ana García</h5>
-                                <p class="text-muted mb-0">ana.garcia@email.com</p>
+                        <div class="card-body text-center">
+                            <div class="avatar-circle bg-primary text-white mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 50%; font-size: 2rem;">
+                                {{ user.first_name|first|default:user.username|first|upper }}
                             </div>
-                            <hr>
-                            <div class="profile-menu">
-                                <a href="#" class="d-block py-2 active">
-                                    <i class="bi bi-calendar-check me-2"></i>Mis Citas
+                            <h5 class="card-title">{{ user.get_full_name|default:user.username }}</h5>
+                            <p class="text-muted">{{ user.email }}</p>
+                            <a href="{% url 'editar_perfil' %}" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil"></i> Editar Perfil
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mt-3">
+                        <div class="card-body">
+                            <h6 class="card-title">Acciones Rápidas</h6>
+                            <div class="d-grid gap-2">
+                                <a href="{% url 'agendar' %}" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-calendar-plus"></i> Nueva Cita
                                 </a>
-                                <a href="#" class="d-block py-2">
-                                    <i class="bi bi-journal-medical me-2"></i>Historial Médico
-                                </a>
-                                <a href="#" class="d-block py-2">
-                                    <i class="bi bi-file-earmark-text me-2"></i>Recetas y Resultados
-                                </a>
-                                <a href="#" class="d-block py-2">
-                                    <i class="bi bi-gear me-2"></i>Configuración
-                                </a>
-                                <a href="#" class="d-block py-2 text-danger">
-                                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
+                                <a href="{% url 'agregar_mascota' %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-plus-circle"></i> Agregar Mascota
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Main Content -->
                 <div class="col-lg-9">
-                    <!-- Upcoming Appointments -->
+                    <!-- User Info -->
                     <div class="card shadow-sm mb-4">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Próximas Citas</h5>
-                        </div>
                         <div class="card-body">
-                            <div class="appointment-item p-3 mb-3 border rounded">
-                                <div class="row align-items-center">
-                                    <div class="col-md-2 text-center mb-3 mb-md-0">
-                                        <div class="appointment-date">
-                                            <span class="d-block fs-4 fw-bold">15</span>
-                                            <span class="d-block text-muted">Jun</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 mb-3 mb-md-0">
-                                        <h6 class="mb-1">Consulta en clínica - Max</h6>
-                                        <p class="mb-1 text-muted"><i class="bi bi-clock me-2"></i>10:00 AM</p>
-                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt me-2"></i>Clínica Central</p>
-                                    </div>
-                                    <div class="col-md-3 text-md-end">
-                                        <button class="btn btn-outline-secondary btn-sm mb-2 w-100">Reprogramar</button>
-                                        <button class="btn btn-outline-danger btn-sm w-100">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="appointment-item p-3 mb-3 border rounded">
-                                <div class="row align-items-center">
-                                    <div class="col-md-2 text-center mb-3 mb-md-0">
-                                        <div class="appointment-date">
-                                            <span class="d-block fs-4 fw-bold">22</span>
-                                            <span class="d-block text-muted">Jun</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 mb-3 mb-md-0">
-                                        <h6 class="mb-1">Peluquería - Max</h6>
-                                        <p class="mb-1 text-muted"><i class="bi bi-clock me-2"></i>02:00 PM</p>
-                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt me-2"></i>Clínica Central</p>
-                                    </div>
-                                    <div class="col-md-3 text-md-end">
-                                        <button class="btn btn-outline-secondary btn-sm mb-2 w-100">Reprogramar</button>
-                                        <button class="btn btn-outline-danger btn-sm w-100">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-4">
-                                <a href="{% url 'agendar' %}" class="btn btn-primary">
-                                    <i class="bi bi-plus-circle me-2"></i>Agendar nueva cita
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Información Personal</h5>
+                                <a href="{% url 'editar_perfil' %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Editar
                                 </a>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Teléfono:</strong> {{ perfil_usuario.telefono|default:"No especificado" }}</p>
+                                    <p><strong>Dirección:</strong> {{ perfil_usuario.direccion|default:"No especificada" }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Fecha de Nacimiento:</strong> {{ perfil_usuario.fecha_nacimiento|default:"No especificada" }}</p>
+                                    <p><strong>Miembro desde:</strong> {{ user.date_joined|date:"d/m/Y" }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Medical History -->
+
+                    <!-- Pets Section -->
                     <div class="card shadow-sm mb-4">
-                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Historial de Atención</h5>
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                    Max (Perro)
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Max (Perro)</a></li>
-                                    <li><a class="dropdown-item" href="#">Luna (Gato)</a></li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="card-body">
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-date">10 May 2023</div>
-                                    <div class="timeline-content">
-                                        <h6>Consulta general</h6>
-                                        <p>Revisión de rutina. Vacuna contra la rabia aplicada. Peso: 12.5 kg.</p>
-                                        <div>
-                                            <a href="#" class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-file-earmark-text me-1"></i>Ver receta
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Mis Mascotas</h5>
+                                <a href="{% url 'agregar_mascota' %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-plus-circle"></i> Agregar Mascota
+                                </a>
+                            </div>
+                            
+                            {% if mascotas %}
+                            <div class="row">
+                                {% for mascota in mascotas %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="border rounded p-3">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold">{{ mascota.nombre }}</h6>
+                                                <p class="text-muted mb-1">{{ mascota.get_especie_display }} - {{ mascota.raza|default:"Sin raza especificada" }}</p>
+                                                <p class="text-muted mb-1">{{ mascota.get_sexo_display }}</p>
+                                                {% if mascota.fecha_nacimiento %}
+                                                <p class="text-muted mb-1">Nacimiento: {{ mascota.fecha_nacimiento|date:"d/m/Y" }}</p>
+                                                {% endif %}
+                                                {% if mascota.peso %}
+                                                <p class="text-muted mb-0">Peso: {{ mascota.peso }} kg</p>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'editar_mascota' mascota.id %}" class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-pencil"></i>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-date">15 Abr 2023</div>
-                                    <div class="timeline-content">
-                                        <h6>Peluquería</h6>
-                                        <p>Baño completo y corte de pelo.</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-date">02 Mar 2023</div>
-                                    <div class="timeline-content">
-                                        <h6>Consulta por malestar</h6>
-                                        <p>Problemas digestivos. Se recetó dieta especial y medicamentos.</p>
-                                        <div>
-                                            <a href="#" class="btn btn-sm btn-outline-primary me-2">
-                                                <i class="bi bi-file-earmark-text me-1"></i>Ver receta
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-outline-info">
-                                                <i class="bi bi-file-earmark-medical me-1"></i>Ver resultados
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                            <div class="text-center mt-4">
-                                <button class="btn btn-outline-secondary">
-                                    <i class="bi bi-arrow-down me-2"></i>Cargar más
-                                </button>
+                            {% else %}
+                            <div class="text-center py-4">
+                                <i class="bi bi-heart display-4 text-muted"></i>
+                                <p class="text-muted mt-2">Aún no has registrado ninguna mascota.</p>
+                                <a href="{% url 'agregar_mascota' %}" class="btn btn-primary">Agregar Primera Mascota</a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
-                    
-                    <!-- My Pets -->
+
+                    <!-- Upcoming Appointments -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Próximas Citas</h5>
+                                <a href="{% url 'agendar' %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-calendar-plus"></i> Nueva Cita
+                                </a>
+                            </div>
+                            
+                            {% if citas_proximas %}
+                            {% for cita in citas_proximas %}
+                            <div class="border rounded p-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="fw-bold">{{ cita.servicio.nombre }}</h6>
+                                        <p class="text-muted mb-1">Mascota: {{ cita.mascota.nombre }}</p>
+                                        <p class="text-muted mb-1">Fecha: {{ cita.fecha_hora|date:"d/m/Y" }} a las {{ cita.fecha_hora|time:"H:i" }}</p>
+                                        <p class="text-muted mb-0">Estado: <span class="badge bg-{{ cita.estado|yesno:'success,warning,danger' }}">{{ cita.get_estado_display }}</span></p>
+                                    </div>
+                                    <div>
+                                        {% if cita.is_upcoming %}
+                                        <a href="{% url 'cancelar_cita' cita.id %}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Estás seguro de cancelar esta cita?')">
+                                            <i class="bi bi-x-circle"></i> Cancelar
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="text-center py-4">
+                                <i class="bi bi-calendar-x display-4 text-muted"></i>
+                                <p class="text-muted mt-2">No tienes citas programadas.</p>
+                                <a href="{% url 'agendar' %}" class="btn btn-primary">Agendar Primera Cita</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Appointment History -->
+                    {% if historial_citas %}
                     <div class="card shadow-sm">
-                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Mis Mascotas</h5>
-                            <button class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-plus-circle me-1"></i>Agregar mascota
-                            </button>
-                        </div>
                         <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="card h-100 pet-card">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div class="pet-avatar me-3">
-                                                    <img src="{% static 'img/dog-avatar.jpg' %}" alt="Max">
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-0">Max</h5>
-                                                    <p class="text-muted mb-0">Perro - Golden Retriever</p>
-                                                </div>
-                                            </div>
-                                            <div class="pet-details">
-                                                <p class="mb-2"><strong>Edad:</strong> 3 años</p>
-                                                <p class="mb-2"><strong>Peso:</strong> 12.5 kg</p>
-                                                <p class="mb-0"><strong>Última visita:</strong> 10 May 2023</p>
-                                            </div>
-                                            <div class="mt-3">
-                                                <a href="#" class="btn btn-sm btn-outline-primary w-100">Ver detalles</a>
-                                            </div>
-                                        </div>
+                            <h5 class="card-title">Historial de Citas</h5>
+                            
+                            {% for cita in historial_citas %}
+                            <div class="border rounded p-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="fw-bold">{{ cita.servicio.nombre }}</h6>
+                                        <p class="text-muted mb-1">Mascota: {{ cita.mascota.nombre }}</p>
+                                        <p class="text-muted mb-1">Fecha: {{ cita.fecha_hora|date:"d/m/Y" }} a las {{ cita.fecha_hora|time:"H:i" }}</p>
+                                        {% if cita.precio_final %}
+                                        <p class="text-muted mb-0">Precio: ${{ cita.precio_final|floatformat:0 }}</p>
+                                        {% endif %}
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card h-100 pet-card">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div class="pet-avatar me-3">
-                                                    <img src="{% static 'img/cat-avatar.jpg' %}" alt="Luna">
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-0">Luna</h5>
-                                                    <p class="text-muted mb-0">Gato - Siamés</p>
-                                                </div>
-                                            </div>
-                                            <div class="pet-details">
-                                                <p class="mb-2"><strong>Edad:</strong> 2 años</p>
-                                                <p class="mb-2"><strong>Peso:</strong> 4.2 kg</p>
-                                                <p class="mb-0"><strong>Última visita:</strong> 05 May 2023</p>
-                                            </div>
-                                            <div class="mt-3">
-                                                <a href="#" class="btn btn-sm btn-outline-primary w-100">Ver detalles</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <span class="badge bg-{% if cita.estado == 'completada' %}success{% elif cita.estado == 'cancelada' %}danger{% else %}warning{% endif %}">
+                                        {{ cita.get_estado_display }}
+                                    </span>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-light py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="mb-3">Mascota Feliz</h5>
-                    <p>Cuidamos con amor y profesionalismo a tus mascotas para que tengan una vida saludable y feliz.</p>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="fw-bold mb-3">Mascota Feliz</h5>
+                    <p class="text-light-50">Cuidando a tus mascotas con amor y profesionalismo desde 1990.</p>
                 </div>
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="mb-3">Contacto</h5>
-                    <p><i class="bi bi-geo-alt me-2"></i>Av. Principal 123, Ciudad</p>
-                    <p><i class="bi bi-telephone me-2"></i>(123) 456-7890</p>
-                    <p><i class="bi bi-envelope me-2"></i>contacto@mascotafeliz.com</p>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3">Contacto</h6>
+                    <p class="text-light-50 mb-1"><i class="bi bi-geo-alt"></i> Calle 123 #45-67, Ciudad</p>
+                    <p class="text-light-50 mb-1"><i class="bi bi-telephone"></i> (555) 123-4567</p>
+                    <p class="text-light-50"><i class="bi bi-envelope"></i> info@mascotafeliz.com</p>
                 </div>
-                <div class="col-md-4">
-                    <h5 class="mb-3">Síguenos</h5>
-                    <div class="d-flex">
-                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
-                    </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Horarios</h6>
+                    <p class="text-light-50 mb-1">Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+                    <p class="text-light-50 mb-1">Sábados: 9:00 AM - 4:00 PM</p>
+                    <p class="text-light-50">Emergencias 24/7</p>
                 </div>
-            </div>
-            <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2023 Mascota Feliz. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
